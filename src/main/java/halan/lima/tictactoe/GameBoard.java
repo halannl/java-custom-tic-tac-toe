@@ -15,12 +15,20 @@ public class GameBoard extends GridPane {
 	Square[][] squares;
 	private List<SquareLine> squareLines;
 
+	/**
+	 * Initialize the board with its size
+	 * @param boardSize
+	 */
 	public GameBoard(int boardSize) {
 		this.numOfSquares = boardSize;
 		squares = new Square[numOfSquares][numOfSquares];
 		build(boardSize);
 	}
 
+	/**
+	 * Build the board with respectives squares
+	 * @param boardSize
+	 */
 	public void build(int boardSize) {
 		for (int i = 0; i < numOfSquares; i++) {
 			for (int j = 0; j < numOfSquares; j++) {
@@ -34,6 +42,10 @@ public class GameBoard extends GridPane {
 		initializeSquareLines();
 	}
 
+	/**
+	 * Return true if the board is full
+	 * @return
+	 */
 	public boolean isFull() {
 		for (int i = 0; i < numOfSquares; i++) {
 			for (int j = 0; j < numOfSquares; j++) {
@@ -44,14 +56,25 @@ public class GameBoard extends GridPane {
 		return true;
 	}
 
+	/**
+	 * List all possible squares combination for winning
+	 * @return
+	 */
 	public List<SquareLine> getSquareLines() {
 		return squareLines;
 	}
 
+	/**
+	 * Get all squares matrix
+	 * @return
+	 */
 	public Square[][] getSquares() {
 		return squares;
 	}
 
+	/**
+	 * Initialize all square lines (combinations)
+	 */
 	private void initializeSquareLines() {
 		List<SquareLine> lines = new ArrayList<>();
 
@@ -65,6 +88,12 @@ public class GameBoard extends GridPane {
 		squareLines = lines;
 	}
 	
+	/**
+	 * Iterate over the squares matrix to provide the square lines
+	 * @param lines
+	 * @param x
+	 * @param y
+	 */
 	private void addLine(List<SquareLine> lines, int x, int y) {
 		if(x + squaresToWin <= numOfSquares) {
 			lines.add(new SquareLine(buildLineHorizontal(x,y)));

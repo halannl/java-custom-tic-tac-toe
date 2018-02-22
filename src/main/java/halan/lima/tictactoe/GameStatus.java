@@ -14,6 +14,9 @@ public class GameStatus extends VBox {
     Label gameStatus;
     Label warning;
     
+    /**
+     * Instantiate the game status with messages
+     */
     public GameStatus() {
         super(2); // Set spacing
         
@@ -30,10 +33,18 @@ public class GameStatus extends VBox {
         getChildren().addAll(gameStatus, warning);
     }
 
+    /**
+     * Set warning message
+     * @param str
+     */
     public void setWarning(String str) {
         warning.setText(str);
     }
 
+    /**
+     * Set game status message
+     * @param str
+     */
     public void setGameStatus(String str) {
         gameStatus.setText(str);
         warning.setText("");

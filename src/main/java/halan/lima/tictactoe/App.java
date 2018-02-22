@@ -60,6 +60,14 @@ public class App extends Application {
 
 	}
 
+	/**
+	 * Validate if the given parameters match the business rules
+	 * @param p1Char
+	 * @param p2Char
+	 * @param p3Char
+	 * @param boardSize
+	 * @throws Exception
+	 */
 	public void validateParameters(String p1Char, String p2Char, String p3Char, int boardSize) throws Exception {
 		if (boardSize < 3 || boardSize > 10) {
 			throw new Exception("Incorrect board size, should be from 3 to 10!");
@@ -69,6 +77,10 @@ public class App extends Application {
 		}
 	}
 
+	/**
+	 * Calculate the size of the components in the board
+	 * @param squaresNumber
+	 */
 	private void calcSquareSize(int squaresNumber) {
 		SQUARESIZE = 700 / squaresNumber;
 		FONTSIZE = SQUARESIZE / 3;

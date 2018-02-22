@@ -25,6 +25,10 @@ public class Game {
 
 	}
 
+	/**
+	 * Getting the unique static instance
+	 * @return
+	 */
 	public static Game getInstance() {
 		if (instance == null) {
 			instance = new Game();
@@ -32,6 +36,13 @@ public class Game {
 		return instance;
 	}
 
+	/**
+	 * Initializing the board components
+	 * @param board
+	 * @param status
+	 * @param controls
+	 * @param computer
+	 */
 	public void initialize(GameBoard board, GameStatus status, GameControls controls, ComputerPlayer computer) {
 		this.board = board;
 		this.status = status;
@@ -40,6 +51,10 @@ public class Game {
 		ready();
 	}
 
+	/**
+	 * Set the game state updating possible information messages and game status
+	 * @param state
+	 */
 	private void setState(Game.State state) {
 		switch (state) {
 		case START:
@@ -63,6 +78,9 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Prepare the game to start
+	 */
 	private void ready() {
 		setState(State.READY);
 		gameState = State.READY;
@@ -71,6 +89,9 @@ public class Game {
 		currentPlayer = r.ints(1, 1, 4).findFirst().getAsInt();
 	}
 
+	/**
+	 * Efectively start the game
+	 */
 	public void start() {
 		if (gameState != State.START) {
 			gameState = State.START;
@@ -80,6 +101,10 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Finish the game (providing the game result)
+	 * @param winner
+	 */
 	public void end(int winner) {
 		setState(State.OVER);
 		gameState = State.OVER;
@@ -91,6 +116,10 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Select the provided square and apply each square rule depending on the square status
+	 * @param square
+	 */
 	public void selectSquare(Square square) {
 		if (gameState == State.START) {
 			if (square.getPlayerMark() == 0) {
@@ -115,6 +144,10 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Try to provide the winner
+	 * @return
+	 */
 	public int findWinner() {
 		List<SquareLine> lines = board.getSquareLines();
 
@@ -135,10 +168,17 @@ public class Game {
 		return 0;
 	}
 
+	/**
+	 * Return true if the board is full (then the game is over)
+	 * @return
+	 */
 	public boolean isOver() {
 		return board.isFull();
 	}
 
+	/**
+	 * Sets the player that has to play
+	 */
 	public void next() {
 		if (currentPlayer == 1)
 			currentPlayer = 2;
@@ -149,6 +189,9 @@ public class Game {
 		setState(State.START);
 	}
 
+	/**
+	 * Restore the preparation for the start
+	 */
 	public void reset() {
 		int numOfSquares = board.numOfSquares;
 		Square[][] squares = board.squares;

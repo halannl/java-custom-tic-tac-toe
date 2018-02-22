@@ -14,6 +14,12 @@ public class Square extends Button {
 	private String p2Text = "O";
 	private String p3Text = "Y";
 
+	/**
+	 * Instantiate with the given parameters for players symbols and square size
+	 * @param p1Text
+	 * @param p2Text
+	 * @param p3Text
+	 */
 	public Square(String p1Text, String p2Text, String p3Text) {
 		if (p1Text != null && p2Text != null && p3Text != null) {
 			this.p1Text = p1Text;
@@ -26,15 +32,25 @@ public class Square extends Button {
 		reset();
 	}
 
+	/**
+	 * Reset the square to the initial status
+	 */
 	public void reset() {
 		setText(defaultText);
 		setTextFill(Color.BLACK);
 	}
 
+	/**
+	 * Highlights the square (in case of victory)
+	 */
 	public void highlight() {
 		setTextFill(Color.RED);
 	}
 
+	/**
+	 * Mark the square with the symbol of the respective player
+	 * @param player
+	 */
 	public void markByPlayer(int player) {
 		if (player == 1)
 			setText(p1Text);
@@ -44,6 +60,10 @@ public class Square extends Button {
 			setText(p3Text);
 	}
 
+	/**
+	 * Get the player that marked the square
+	 * @return
+	 */
 	public int getPlayerMark() {
 		String text = getText();
 		if (text.equalsIgnoreCase(p1Text))

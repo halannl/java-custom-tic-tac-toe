@@ -10,6 +10,10 @@ public class SquareLine {
 		this.squares = squares;
 	}
 
+	/**
+	 * Get the String with the sequence of marks of the squares for this line
+	 * @return
+	 */
 	public String getPlayerMarks() {
 		String line = "";
 		for (int i = 0; i < squares.length; i++) {
@@ -18,10 +22,17 @@ public class SquareLine {
 		return line;
 	}
 	
+	/**
+	 * Get the array of the squares in this line
+	 * @return
+	 */
 	public Square[] getSquareArray() {
 		return this.squares;
 	}
 
+	/**
+	 * Highlights the squares of the entire line
+	 */
 	public void highlight() {
 		for (int i = 0; i < squares.length; i++) {
 			squares[i].highlight();

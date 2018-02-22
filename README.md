@@ -1,8 +1,14 @@
 # java-custom-tic-tac-toe
 A custom Tic Tac Toe game made in java.
 
-This tic tac toe version is made for 3 players, 2 of them are human and another is a computer.
+This tic tac toe version is made for 3 players, 2 of them are human and the another one is the computer.
 You can choose which symbol each player will use and can set the board size between 3 and 10.
+
+## Configuration
+
+To configure it you can find an "app.properties" file in the src/main/resources folder, than change the properties.
+
+## Execution
 
 To play the game you must build the project using maven by the commands:
 

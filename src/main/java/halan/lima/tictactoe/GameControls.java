@@ -19,6 +19,9 @@ public class GameControls extends HBox {
 		build();
 	}
 
+	/**
+	 * Building the headers buttons
+	 */
 	private void build() {
 		btnStart = new Button();
 		btnStart.setText("Start");
@@ -33,6 +36,10 @@ public class GameControls extends HBox {
 		getChildren().addAll(btnReset);
 	}
 
+	/**
+	 * Set the state of the board disabling and enabling the respective actions
+	 * @param state
+	 */
 	public void setState(GameControls.State state) {
 		switch (state) {
 		case WAIT:
